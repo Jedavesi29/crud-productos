@@ -1,0 +1,118 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="center">
+     LISTA DE PRODUCTOS
+    </ion-title>
+
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+      <ion-searchbar placeholder="Buscar Nombre o Fecha" (ionChange)="buscarProducto($event)" animated></ion-searchbar>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refrescando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div>
+
+    <ion-list>
+      <!-- Searchbar with cancel button shown on focus -->
+     
+      <ion-card *ngFor="let item of productos | filtro: buscar " >
+          
+         
+          
+        <span *ngIf="!item.isEdit; else elseBlock">
+            <ion-fab vertical="center"  slot="fixed" >
+                <ion-icon  padding name="contact" color="warning" ></ion-icon>
+              
+              </ion-fab>
+             
+          <ion-card-header (click)="EditRecord(item)" >
+            
+           
+            <ion-card-subtitle class="center">   <b>{{item.nombre}} </b>
+            </ion-card-subtitle>
+            <ion-card-subtitle > &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Cantidad: {{item.cantidad}}</ion-card-subtitle>
+            <ion-card-subtitle >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Precio: {{item.precio}}</ion-card-subtitle>
+            <ion-card-subtitle >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Agregado: {{item.fecha}}</ion-card-subtitle>
+            
+          
+          </ion-card-header>
+          <ion-card-content>
+
+           <!-- <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
+              <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+
+            </ion-button> -->
+           
+
+          </ion-card-content>
+        </span>
+        <ng-template #elseBlock>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    Editar
+                  </ion-col>
+                  <ion-col>
+                    <ion-button fill="clear" color="primary" size="small" (click)="item.isEdit = false">
+                      Cancelar
+                    </ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button fill="outline" color="success" size="small" (click)="actualizarProductos(item)">
+                      Actualizar
+                    </ion-button>
+                    <ion-button fill="outline" color="danger" size="small" (click)="eliminarProductos(item)">
+                      Eliminar
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-item>
+              <ion-label><strong>Nombre</strong></ion-label>
+              <ion-input type="text" [(ngModel)]="item.editNombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label><strong> Cantidad</strong></ion-label>
+              <ion-input type="number" [(ngModel)]="item.editCantidad"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label><strong>Precio</strong></ion-label>
+              <ion-input type="number" [(ngModel)]="item.editPrecio"></ion-input>
+            </ion-item>
+           
+        
+          
+          </ion-card-content>
+        </ng-template>
+      </ion-card>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

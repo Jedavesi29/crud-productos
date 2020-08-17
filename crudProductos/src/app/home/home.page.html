@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="center">
+      
+      INICIO
+     
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	
+	
+ <div>
+  <ion-item *ngFor="let item of items; ">
+    
+    <ion-icon name="person-circle-outline"></ion-icon> &nbsp; <h6>{{item.usuario}} </h6> <br>
+   
+    <br>
+  
+  </ion-item>
+</div>
+
+
+   
+  <div class="ion-padding fondo">
+	
+	<ion-list>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<div class="boton"  (click)=" navegarAggProductos()">
+           
+            <ion-icon name="add-circle-outline" color="secondary" class="icon-boton"></ion-icon>
+					  Añadir	Producto
+					</div>
+				</ion-col>
+				<ion-col *ngFor="let usuario of usuarios; ">
+					<div class="boton" >
+						
+						<ion-icon color="primary" class="icon-boton" name="people"></ion-icon>
+						<b>Usuarios:</b>&nbsp;{{usuario.cantidad}}			
+							</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+		<ion-col>
+      <div class="boton"  (click)="navegarProductos()">
+        
+        <ion-icon name="cart-outline" color="secondary" class="icon-boton"></ion-icon>
+      
+     Lista Productos
+      </div>
+    </ion-col>
+				
+			</ion-row>
+		
+		</ion-grid>
+
+		</ion-list>
+  </div>
+ 
+
+
+    <ion-fab vertical="end" horizontal="end" slot="fixed" (click)="cerrarSesion()">
+      <ion-fab-button color="danger" >
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+  
+ 
+
+</ion-content>

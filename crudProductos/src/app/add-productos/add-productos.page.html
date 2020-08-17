@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="center">AGREGAR PRODUCTOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-text color="success" class="center" mode="ios">
+      <h2>Información del producto
+      </h2>
+    </ion-text>
+    <ion-row>
+      <ion-item>
+        <ion-input placeholder="Nombre" [(ngModel)]="nombre" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+
+        <ion-input placeholder="Cantidad" [(ngModel)]="cantidad" type="number"></ion-input>
+
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="precio" [(ngModel)]="precio" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-button color="success" (click)="takePicture()"> <ion-icon name="camera-outline"></ion-icon>  Tomar Foto</ion-button>
+     <img [src]="base64Image" >
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button color="primary" (click)="crearProductos()"
+          [disabled]="!nombre || !cantidad || !precio ">
+          <ion-icon size="small" slot="icon-only" name="save">  </ion-icon>
+          &nbsp;Agregar Producto
+        </ion-button>
+      </ion-col>
+      <ion-col text-center>
+      
+        <ion-button color="danger" (click)="navegarLista()" >
+          <ion-icon name="close-circle-outline"></ion-icon> &nbsp;Cancelar
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

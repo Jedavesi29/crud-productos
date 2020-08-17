@@ -1,0 +1,64 @@
+.center{
+    
+    text-align: center;
+}
+.color{
+facebook:#3b5998;
+
+}
+ion-content {
+    display: flex;
+    
+       }
+            
+       .fondo{
+        background-image: url("../../assets/Logo4.jpg");
+        background-repeat: no-repeat ;
+        background-size: cover ;
+        background-position: center ;
+        width: 100% ;
+        height: 100%;
+        position: relative ;
+        border: none ;
+        
+        }
+
+
+
+
+
+                ion-card-title{
+                    text-align: center ;
+    color: aliceblue;
+    }
+    ion-card-content{
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    
+    
+    }
+    ion-card{
+        box-shadow: none;
+        background: #00000080;
+        border-radius: 5px;
+    }
+        ion-list{
+    
+            background: transparent;
+        }
+    ion-item{
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border: medium none;
+    
+    }
+    a{
+    color: aliceblue;
+    
+    }
+    ion-icon{
+        padding-right: 10px;
+    }
